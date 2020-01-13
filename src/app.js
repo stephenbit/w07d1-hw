@@ -1,25 +1,27 @@
 import Vue from 'vue';
 
-document.addEventListener('DOMContentLoaded', function() {
-new Vue({
-el: "#app",
-data: {
-  items: [
-    {name: "Gather berries". inCompleted: false}
-  ],
-  newItem: ""
-},
-methods: {
-  saveNewItem: function() {
-    this.items.push({
-      name: this.newItem,
-      isPurchased: false
-    });
-    this.newItem = "";
-  };
-  addItem: function(index){
-    this.items[index].isPurchased = true;
-  }
-}
-});
+document.addEventListener('DOMContentLoaded', () => {
+  new Vue({
+    el: "#app",
+    data: {
+      tasks: [
+        {name: "obtain Huel referral link", isCompleted: false},
+        {name: "post on Insta", isCompleted: false},
+        {name: "buy Huel", isCompleted: false}
+      ],
+      newTask: ""
+    },
+    methods: {
+      saveNewTask: function() {
+        this.tasks.push({
+          name: this.newTask,
+          isCompleted: false
+        });
+        this.newTask = "";
+      },
+      completeTask: function(index){
+        this.tasks[index].isCompleted = true;
+      }
+    }
+  });
 });

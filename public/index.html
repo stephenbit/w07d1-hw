@@ -12,10 +12,16 @@
   <div id="app">
     <h1>Remind Me!</h1>
       <ul>
-        <li>buy chicken</li>
-        <li>clean room</li>
-        <li>plaster roof</li>
+        <li v-for="(task, index) in tasks" :class="task.isCompleted ? 'completed':'not-completed'" >
+          <span>{{ task.name }}</span>
+          <span v-if="task.isCompleted">&#10004;</span>
+          <button v-if="!task.isCompleted" v-on:click="completeTask(index)">Mark As Complete</button>
+        </li>
       </ul>
+      <form v-on:submit.prevent="saveNewTask">
+        <label for="new-task">Add new task:</label>
+        <input id="new-task" type="text" v-model="newTask" />
+      </form>
   </div>
 </body>
 </html>
